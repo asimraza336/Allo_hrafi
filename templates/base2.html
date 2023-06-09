@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="{% static 'assets/css/material-dashboard.css' %}" rel="stylesheet" />
+  <link href="{% static 'assets/demo/demo.css' %}" rel="stylesheet" />
+
+  <link href="{% static 'assets/css/material-dashboard.min.css' %}"  rel="stylesheet" />
+  {% comment %} <link href="{% static 'assets/css/light-bootstrap-dashboard.css' %}"  rel="stylesheet" /> {% endcomment %}
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+  <style>
+    .dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 260px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+
+
+@media print
+{
+.noprint {display:none;}
+}
+
+/* @media screen
+{
+...
+} */
+
+</style>
+  {% block title %}
+            
+  {% endblock %}
+</head>
+
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="rose" data-background-color="black" data-image="{% static 'assets/img/sidebar-1.jpg' %}">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+      <div class="logo"><a href="#" class="simple-text logo-mini">
+          MA
+        </a>
+        <a href="#" class="simple-text logo-normal">
+          My Application
+        </a></div>
+      <div class="sidebar-wrapper">
+        <div class="user">
+          <div class="photo">
+             <img src="{% static '/assets/img/faces/face-1.jpg' %}" /> 
+          </div>
+          <div class="user-info">
+            <a data-toggle="collapse" href="#collapseExample" class="username">
+              <span>
+                {{user.username}}
+                <b class="caret"></b>
+              </span>
+            </a>
+
+          </div>
+        </div>
+        <ul class="nav">
+          <li class="nav-item  ">
+            <a class="nav-link" href="{% url 'dashboard' %}">
+              <i class="material-icons">dashboard</i>
+              <p> Dashboard </p>
+            </a>
+          </li>
+         
+    
+          <li class="nav-item ">
+            <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
+              <i class="material-icons">image</i>
+              <p> City
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="componentsExamples">
+              <ul class="nav">
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="{% url 'adminApp:allcities' %}">
+                    <span class="sidebar-mini"> AC </span>
+                    <span class="sidebar-normal"> All Cities  </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{% url 'adminApp:CreateCity' %}">
+                    <span class="sidebar-mini"> CC </span>
+                    <span class="sidebar-normal"> Create CIty </span>
+                  </a>
+                </li>
+               
+              </ul>
+            </div>
+          </li> 
+
+
+
+          <li class="nav-item ">
+            <a class="nav-link" data-toggle="collapse" href="#categoryExamples">
+              <i class="material-icons">grid_on</i>
+              <p> Category
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="categoryExamples">
+              <ul class="nav">
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="{% url 'adminApp:allCategories' %}">
+                    <span class="sidebar-mini"> AC </span>
+                    <span class="sidebar-normal"> All Categories  </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{% url 'adminApp:CreateCategory' %}">
+
+                    <span class="sidebar-mini" > CC </span>
+                    <span class="sidebar-normal"> Create Category </span>
+                  </a>
+                </li>
+               
+              </ul>
+            </div>
+          </li> 
+
+
+          <li class="nav-item ">
+            <a class="nav-link" data-toggle="collapse" href="#manageuser">
+              <i class="material-icons">person</i>
+              <p> Manage Users
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="manageuser">
+              <ul class="nav">
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="{% url 'adminApp:ProviderUsers' %}">
+                    <span class="sidebar-mini"> PU </span>
+                    <span class="sidebar-normal"> Provider Users  </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{% url 'adminApp:ClientUsers' %}">
+
+                    <span class="sidebar-mini" > CU </span>
+                    <span class="sidebar-normal"> Client Users </span>
+                  </a>
+                </li>
+               
+              </ul>
+            </div>
+          </li> 
+
+
+         
+
+          
+        </ul>
+      </div>
+      <div class="sidebar-background"></div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-minimize">
+              <button id="minimizeSidebar" class="btn btn-just-icon btn-white btn-fab btn-round">
+                <i class="material-icons text_align-center visible-on-sidebar-regular">more_vert</i>
+                <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:;">Dashboard</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+
+            <ul class="navbar-nav">
+
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">person</i>Account
+                  <p class="d-lg-none d-md-block">
+                    Account
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                  <!-- <a class="dropdown-item" href="#">Profile</a> -->
+                  <!-- <a class="dropdown-item" href="#">Settings</a> -->
+                  <!-- <div class="dropdown-divider"></div> -->
+                  <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      
+      <!-- <div class="content"> -->
+        
+        <div class="content">
+          {% block messages %}
+            {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endblock messages %}
+          <div class="container-fluid">
+            {% block content %}
+            
+            {% endblock %}
+          </div>
+        </div>
+        
+
+    </div>
+  </div>
+
+  {% block java %}
+    
+  
+    {% endblock %}
+    <script>
+      L_PREFER_CANVAS = true;
+      L_NO_TOUCH = false;
+      L_DISABLE_3D = false;
+    </script>
+<link href="{% static '/assets/demo/demo.css' %}" rel="stylesheet" />
+  <script src="{% static 'assets/js/core/jquery.min.js' %}" ></script>
+  <script src="{% static 'assets/js/core/popper.min.js' %}" ></script>
+  <script src="{% static 'assets/js/core/bootstrap-material-design.min.js' %}" ></script>
+  <script src="{% static '/assets/js/plugins/perfect-scrollbar.min.js' %}" ></script>
+  <script src="{% static 'assets/js/plugins/chartist.min.js' %}" ></script>
+  <script src="{% static 'assets/js/plugins/bootstrap-notify.js' %}" ></script>
+  <script src="{% static 'assets/js/material-dashboard.js' %}"  type="text/javascript"></script>
+
+
+
+
+  <script src="{% static 'assets/js/plugins/moment.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/sweetalert2.js' %}" ></script>
+  <script src="{% static 'assets/js/plugins/jquery.validate.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/jquery.bootstrap-wizard.js' %}" ></script>
+  <script src="{% static 'assets/js/plugins/bootstrap-selectpicker.js' %}" ></script>
+  <script src="{% static 'assets/js/plugins/bootstrap-datetimepicker.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/bootstrap-tagsinput.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/jasny-bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/fullcalendar.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/jquery-jvectormap.js' %}" ></script>
+  <script src="{% static 'assets/js/plugins/nouislider.min.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js" ></script>
+  <script src="{% static 'assets/js/plugins/arrive.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <script src="{% static 'assets/js/plugins/chartist.min.js' %}" ></script>
+  <script src="{% static 'assets/js/plugins/bootstrap-notify.js' %}"></script>
+  <script src="{% static 'assets/js/material-dashboard.js' %}"   type="text/javascript"></script>
+
+
+
+
+  <script>
+      $('a').click(function() {
+        className = $(this).attr('class');
+        if(className.includes('cityname')){
+        // $(this).attr("disabled", "disabled");
+        $(this).click(function(e) {
+      e.preventDefault();
+    });
+        // $(this).attr("href", "#");
+
+        }
+
+});
+
+    $('#id_image').change(function () {
+    var vidFileLength = $("#id_image")[0].files.length;
+// if(vidFileLength === 0){
+  if ($('#id_image').val()) {
+    $('#ups').hide();
+    // alert($("#id_image")[0].files.length);
+    
+
+    if(vidFileLength){
+        for(x=0;x<vidFileLength;x++){
+              var file=$("#id_image").get(0).files;
+              var reader= new FileReader();          
+              reader.onload=function(event){
+                    stm='<img src='+event.target.result+'  width="15%"> ';
+                    $("#imh").append(stm); 
+                  }
+                  // URL.createObjectURL(event.target.files[0]);
+              reader.readAsDataURL(file[x]);
+              }
+        }
+    // var file=$("#id_image").get(0).files[1];
+
+    // if(file){
+    //   var reader= new FileReader();
+
+    //     reader.onload=function(){
+    //       stm='<img src='+reader.result+'  width="15%"> ';
+    //       $("#imh").append(stm); 
+    //     }
+    //     reader.readAsDataURL(file);
+    // }
+}
+else{
+  // $('#rems').hide();
+  $('#ups').show();
+  $('#imgbox img').remove();
+}
+});
+// $(document).on("click", "#baba", function () {
+//     alert('say');
+// });
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+    $(document).ready(function() {
+      $().ready(function() {
+
+       
+        $sidebar = $('.sidebar');
+
+        $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+        if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+          if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+            $('.fixed-plugin .dropdown').addClass('open');
+          }
+
+        }
+
+        $('.fixed-plugin a').click(function(event) {
+          // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .active-color span').click(function() {
+          $full_page_background = $('.full-page-background');
+
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-color', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .background-color .badge').click(function() {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('background-color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-background-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .img-holder').click(function() {
+          $full_page_background = $('.full-page-background');
+
+          $(this).parent('li').siblings().removeClass('active');
+          $(this).parent('li').addClass('active');
+
+
+          var new_image = $(this).find("img").attr('src');
+
+          if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            $sidebar_img_container.fadeOut('fast', function() {
+              $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+              $sidebar_img_container.fadeIn('fast');
+            });
+          }
+
+          if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $full_page_background.fadeOut('fast', function() {
+              $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+              $full_page_background.fadeIn('fast');
+            });
+          }
+
+          if ($('.switch-sidebar-image input:checked').length == 0) {
+            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+          }
+        });
+
+        $('.switch-sidebar-image input').change(function() {
+          $full_page_background = $('.full-page-background');
+
+          $input = $(this);
+
+          if ($input.is(':checked')) {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar_img_container.fadeIn('fast');
+              $sidebar.attr('data-image', '#');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page_background.fadeIn('fast');
+              $full_page.attr('data-image', '#');
+            }
+
+            background_image = true;
+          } else {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar.removeAttr('data-image');
+              $sidebar_img_container.fadeOut('fast');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page.removeAttr('data-image', '#');
+              $full_page_background.fadeOut('fast');
+            }
+
+            background_image = false;
+          }
+        });
+
+        $('.switch-sidebar-mini input').change(function() {
+          $body = $('body');
+
+          $input = $(this);
+
+          if (md.misc.sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            md.misc.sidebar_mini_active = false;
+
+            if ($(".sidebar").length != 0) {
+              var ps = new PerfectScrollbar('.sidebar');
+            }
+            if ($(".sidebar-wrapper").length != 0) {
+              var ps1 = new PerfectScrollbar('.sidebar-wrapper');
+            }
+            if ($(".main-panel").length != 0) {
+              var ps2 = new PerfectScrollbar('.main-panel');
+            }
+            if ($(".main").length != 0) {
+              var ps3 = new PerfectScrollbar('main');
+            }
+
+          } else {
+
+            if ($(".sidebar").length != 0) {
+              var ps = new PerfectScrollbar('.sidebar');
+              ps.destroy();
+            }
+            if ($(".sidebar-wrapper").length != 0) {
+              var ps1 = new PerfectScrollbar('.sidebar-wrapper');
+              ps1.destroy();
+            }
+            if ($(".main-panel").length != 0) {
+              var ps2 = new PerfectScrollbar('.main-panel');
+              ps2.destroy();
+            }
+            if ($(".main").length != 0) {
+              var ps3 = new PerfectScrollbar('main');
+              ps3.destroy();
+            }
+
+
+            setTimeout(function() {
+              $('body').addClass('sidebar-mini');
+
+              md.misc.sidebar_mini_active = true;
+            }, 300);
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+
+        });
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      md.initDashboardPageCharts();
+
+      md.initVectorMap();
+
+    });
+  </script>
+</body>
+
+</html>

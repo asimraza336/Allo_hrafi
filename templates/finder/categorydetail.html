@@ -1,0 +1,612 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+
+<!-- Mirrored from aonetheme.com/sf-html-demo/search-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Apr 2023 19:15:15 GMT -->
+<head>
+
+    <title>Service Finder Template | Search Grid</title>
+    {% include 'headerlinks.html' %}
+
+
+</head>
+
+<body>
+    <!-- LOADING AREA START ===== -->
+    <div class="loading-area">
+        <div class="loading-box"></div>
+        <div class="loading-pic">
+            <div class="windows8">
+                <div class="wBall" id="wBall_1">
+                    <div class="wInnerBall"></div>
+                </div>
+                <div class="wBall" id="wBall_2">
+                    <div class="wInnerBall"></div>
+                </div>
+                <div class="wBall" id="wBall_3">
+                    <div class="wInnerBall"></div>
+                </div>
+                <div class="wBall" id="wBall_4">
+                    <div class="wInnerBall"></div>
+                </div>
+                <div class="wBall" id="wBall_5">
+                    <div class="wInnerBall"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOADING AREA  END ====== -->
+    
+<div class="page-wraper">        <!-- HEADER START -->
+    {% include 'headers.html' %}
+    
+        <!-- HEADER END -->
+
+    <!-- Content -->
+    <div class="page-content">
+        
+        
+        <!-- Search Panel Area -->
+        <div class="sf-seach-vertical sf-search-bar-panel">
+            <div class="search-form ">
+              <form class="clearfix search-providers" method="get">
+
+                  <div class="sf-searchbar-box">
+                    <ul class="sf-searchbar-area">
+                      <li>
+                        <div class="sf-search-title">  
+                            <label>Keyword</label>
+                            <span class="sf-search-icon"><img src="images/search-bar/keyword.png" alt=""/></span>
+                        </div>
+                        <div class="sf-search-feild">
+                            <input type="text" value="" placeholder="Keyword" id="keyword" name="keyword" class="form-control sf-form-control">
+                        </div>
+                      </li>
+                      <li>
+                        <div class="sf-search-title">
+                            <label>Location</label>
+                            <span class="sf-search-icon"><img src="images/search-bar/location-pin.png" alt=""/></span>
+                        </div>
+                        <div class="sf-search-feild">
+                            <input type="text" value="" placeholder="Address" id="searchAddress" name="searchAddress" class="form-control sf-form-control pac-target-input" autocomplete="off">
+                        </div>
+                      </li>
+                      <li>
+                        <div class="sf-search-title">
+                            <label>Category</label>
+                            <span class="sf-search-icon"><img src="images/search-bar/maintenance.png" alt=""/></span>
+                        </div>
+                        <div class="sf-search-feild">
+                            <select id="categorysrh" name="catid" class="form-control sf-form-control aon-categories-select sf-select-box" title="Category">
+                                <option class="bs-title-option" value="">Select a Category</option>
+                                <option value="17" data-content="<img class='childcat-img' width='50' height='auto' src=images/cat-thum/cat-1.jpg>
+                                  <span class='childcat'>Cab Service</span>">Cab Service
+                                </option>
+                                <option value="30" data-content="<img class='childcat-img' width='50' height='auto' src=images/cat-thum/cat-2.jpg>
+                                  <span class='childcat'>Car Dealers</span>">Car Dealers
+                                </option>
+                                <option value="19" data-content="<img class='childcat-img' width='50' height='auto' src=images/cat-thum/cat-3.jpg>
+                                  <span class='childcat'>Food & Drink</span>">Food & Drink
+                                </option>
+                                <option value="19" data-content="<img class='childcat-img' width='50' height='auto' src=images/cat-thum/cat-4.jpg>
+                                  <span class='childcat'>Plumber</span>">Plumber
+                                </option>
+                                <option value="19" data-content="<img class='childcat-img' width='50' height='auto' src=images/cat-thum/cat-5.jpg>
+                                  <span class='childcat'>Electrician</span>">Electrician 
+                                </option>                                                    
+                              </select>
+                        </div>
+
+                      </li>
+                      <li>
+                        <div class="sf-search-title">
+                            <label>Country</label>
+                            <span class="sf-search-icon"><img src="images/search-bar/globe.png" alt=""/></span>
+                        </div>
+                        <div class="sf-search-feild">
+                            <select class="sf-select-box form-control sf-form-control bs-select-hidden" data-live-search="true" name="country" id="country" title="Country" data-header="Select a Country">
+                              <option class="bs-title-option" value="">Country</option>
+                              <option value="">Select Country</option>
+                              <option value="Turkey">Turkey</option>
+                              <option value="United States">United States</option>
+                            </select>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="sf-search-title">
+                            <label>City</label>
+                            <span class="sf-search-icon"><img src="images/search-bar/city.png" alt=""/></span>
+                        </div>
+                        <div class="sf-search-feild">
+                            <select class="sf-select-box form-control sf-form-control bs-select-hidden" data-live-search="true" name="city" id="city" title="City" data-header="Select a City">
+                              <option class="bs-title-option" value="">City</option>
+                              <option value="">Select City</option>
+                            </select>
+                        </div>
+
+                      </li>
+
+
+                      <li>
+                        <div class="sf-search-title">
+                            <label>Filter by price interval:</label>
+                            <span class="sf-search-icon"><img src="images/search-bar/city.png" alt=""/></span>
+                        </div>
+                        <div class="sf-search-feild">
+                            <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/>
+                            <b class="sf-left-value">€ 10</b>
+                            <b class="sf-right-value">€ 1000</b>
+                        </div>
+
+                      </li>
+                      <li>
+                        <div class="sf-search-title">
+                            <label>Filter by Radius:</label>
+                            <span class="sf-search-icon"><img src="images/search-bar/city.png" alt=""/></span>
+                        </div>
+                        <div class="sf-search-feild">
+                            <input id="ex3" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                            <b class="sf-left-value">€ 10</b>
+                            <b class="sf-right-value">€ 1000</b>
+                        </div>
+
+                      </li>
+
+
+                    </ul>
+                    <button type="button" class="site-button sf-search-btn"><i class="fa fa-search"></i> Search Now</button>
+                  </div>
+
+                 
+              </form>
+            </div>
+        </div>
+        <!-- Search Panel Area End -->
+        
+        <!-- Search Result Area -->
+        <div class="aon-search-result-area">
+            
+            <!-- Search Filter -->
+            <div class="sf-search-result-top flex-wrap d-flex justify-content-between align-items-center">
+                <div class="sf-search-result-title"> <h5>Showing 1 – 10 of 16 results</h5></div>
+                {% comment %} <div class="sf-search-result-option">
+                    <ul class="sf-search-sortby">
+                      <li class="sf-select-sort-by">
+                        <select class="sf-select-box form-control sf-form-control bs-select-hidden" title="SORT BY" name="setorderby" id="setorderby">
+                          <option class="bs-title-option" value="">SORT BY</option>
+                          <option value="rating">Rating</option>
+                          <option value="title">Title</option>
+                          <option value="distance">Distance</option>
+                        </select>
+                      </li>
+                      <li>
+                        <select class="sf-select-box form-control sf-form-control bs-select-hidden" title="DESC" name="setorder" id="setorder">
+                          <option class="bs-title-option" value="">DESC</option>
+                          <option value="asc">ASC</option>
+                          <option value="desc">DESC</option>
+                        </select>
+                      </li>
+                      <li>
+                        <select class="sf-select-box form-control sf-form-control bs-select-hidden" title="9" name="numberofpages" id="numberofpages">
+                          <option class="bs-title-option" value="">9</option>
+                          <option value="9">9</option>
+                          <option value="12">12</option>
+                          <option value="15">15</option>
+                          <option value="20">20</option>
+                          <option value="25">25</option>
+                          <option value="30">30</option>
+                        </select>
+                      </li>
+                    </ul>
+                    <ul class="sf-search-grid-option" id="viewTypes">
+                      <li data-view="grid-3">
+                        <button type="button" class="btn btn-border btn-icon"><i class="fa fa-th"></i></button>
+                      </li>
+                      <li data-view="listview" class="active">
+                        <button type="button" class="btn btn-border btn-icon"><i class="fa fa-th-list"></i></button>
+                      </li>
+                    </ul>
+                </div> {% endcomment %}
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="aon-bnr2-content-wrap">
+                        <!--Banner Text-->
+                        
+                        <!--Banner Text End-->
+                        <!--Seach Bar-->
+                        {% comment %} data-content="<img class='childcat-img' width='50' height='auto' src={% if cat.city_image.url %}{{cat.city_image.url}}{% endif %}  >
+                                            <span class='childcat'>{{cit.name}}</span>" {% endcomment %}
+                        <div class="aon-bnr2-search-bar">
+                            <form>
+                                <div class="aon-bnr2-search-box">
+                                    <!-- COLUMNS 1 -->
+                                    <div class="aon-search-input keywords-input">
+                                        <input type="text" placeholder="Search Keywords" class="form-control">
+                                    </div>
+                                    <!-- COLUMNS 2 -->
+                                    <div class="aon-search-input category-select">
+                                        <select id="citysrh" name="citid" class="form-control sf-form-control aon-categories-select sf-select-box" title="City">
+                                          <option class="bs-title-option" value="">Select a City</option>
+                                          {% for cit in cities %}
+                                          
+                                          <option value="{{cit.name}}" >{{cit.name}}
+                                          </option>
+                    {% endfor %}
+                                                                                      
+                                        </select>
+                                    </div>
+                                    <div class="aon-search-input category-select">
+                                        <select id="categorysrh" name="catid" class="form-control sf-form-control aon-categories-select sf-select-box" title="Category">
+                                            <option class="bs-title-option" value="">Select a Category</option>
+
+                                            {% for cat in categories %}
+                                          
+                                          <option value="{{cat.id}}" data-content="<img class='childcat-img' width='50' height='auto' src={{cat.category_image.url}}  >
+                                            <span class='childcat'>{{cat.name}}</span>">{{cat.name}}
+                                          </option>
+                                          {% comment %} <option value="30" data-content="<img class='childcat-img' width='50' height='auto' src=images/cat-thum/cat-2.jpg>
+                                            <span class='childcat'>Car Dealers</span>">Car Dealers
+                                          </option>
+                                          <option value="19" data-content="<img class='childcat-img' width='50' height='auto' src=images/cat-thum/cat-3.jpg>
+                                            <span class='childcat'>Food & Drink</span>">Food & Drink
+                                          </option>
+                                          <option value="19" data-content="<img class='childcat-img' width='50' height='auto' src=images/cat-thum/cat-4.jpg>
+                                            <span class='childcat'>Plumber</span>">Plumber
+                                          </option>
+                                          <option value="19" data-content="<img class='childcat-img' width='50' height='auto' src=images/cat-thum/cat-5.jpg>
+                                            <span class='childcat'>Electrician</span>">Electrician 
+                                          </option>      {% endcomment %}
+                    {% endfor %}
+                                                                                       
+                                        </select>
+                                    </div>
+                                    <!-- COLUMNS 3 -->
+                                    <div class="aon-search-btn-wrap">
+                                        <button class="aon-search-btn" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!--Seach Bar End-->
+                    </div>
+                </div>
+            </div>
+            <!-- Search Filter End -->
+            <div class="sf-map-filter">
+                <button class="search-filter-btn btn site-button" type="button"><i class="fa fa-sliders"></i> Search Filter</button>
+            </div>
+            
+            <!-- Search Result Show -->
+            <div class="row">
+                <!--Block 1-->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                    <div class="aon-ow-provider-wrap">
+                        <div class="aon-ow-provider">
+
+                            <div class="aon-ow-top">
+                                <div class="aon-pro-check"><span><i class="fa fa-check"></i></span></div>
+                                <div class="aon-pro-favorite"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                <div class="aon-ow-info">
+                                    <h4 class="aon-title"><a href="profile-full.html">Colin Farrell</a></h4>
+                                    <span>Queens, United States</span>
+                                </div>
+                            </div>
+                            <div class="aon-ow-mid">
+                                <div class="aon-ow-media">
+                                    <a href="profile-full.html"><img src="images/providers/1.jpg" alt=""></a>
+                                </div>
+                                <p>Through our expertise, technological knowledge, global presence and bespoke.</p>
+                                <div class="aon-ow-pro-rating">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star text-gray"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!--Block 2-->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                    <div class="aon-ow-provider-wrap">
+                        <div class="aon-ow-provider">
+
+                            <div class="aon-ow-top">
+                                <div class="aon-pro-check"><span><i class="fa fa-check"></i></span></div>
+                                <div class="aon-pro-favorite"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                <div class="aon-ow-info">
+                                    <h4 class="aon-title"><a href="profile-full.html">Jackie Chan</a></h4>
+                                    <span>Queens, United States</span>
+                                </div>
+                            </div>
+                            <div class="aon-ow-mid">
+                                <div class="aon-ow-media">
+                                    <a href="profile-full.html"><img src="images/providers/2.jpg" alt=""></a>
+                                </div>
+                                <p>Through our expertise, technological knowledge, global presence and bespoke.</p>
+                                <div class="aon-ow-pro-rating">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star text-gray"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aon-ow-bottom">
+                            <a href="profile-full.html">Request A Quote</a>
+                        </div>
+                    </div>
+                </div>
+                <!--Block 3-->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                    <div class="aon-ow-provider-wrap">
+                        <div class="aon-ow-provider">
+
+                            <div class="aon-ow-top">
+                                <div class="aon-pro-check"><span><i class="fa fa-check"></i></span></div>
+                                <div class="aon-pro-favorite"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                <div class="aon-ow-info">
+                                    <h4 class="aon-title"><a href="profile-full.html">James McAvoy</a></h4>
+                                    <span>Queens, United States</span>
+                                </div>
+                            </div>
+                            <div class="aon-ow-mid">
+                                <div class="aon-ow-media">
+                                    <a href="profile-full.html"><img src="images/providers/3.jpg" alt=""></a>
+                                </div>
+                                <p>Through our expertise, technological knowledge, global presence and bespoke.</p>
+                                <div class="aon-ow-pro-rating">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star text-gray"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aon-ow-bottom">
+                            <a href="profile-full.html">Request A Quote</a>
+                        </div>
+                    </div>
+                </div>
+                <!--Block 4-->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                    <div class="aon-ow-provider-wrap">
+                        <div class="aon-ow-provider">
+
+                            <div class="aon-ow-top">
+                                <div class="aon-pro-check"><span><i class="fa fa-check"></i></span></div>
+                                <div class="aon-pro-favorite"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                <div class="aon-ow-info">
+                                    <h4 class="aon-title"><a href="profile-full.html">Edward Luise</a></h4>
+                                    <span>Queens, United States</span>
+                                </div>
+                            </div>
+                            <div class="aon-ow-mid">
+                                <div class="aon-ow-media">
+                                    <a href="profile-full.html"><img src="images/providers/4.jpg" alt=""></a>
+                                </div>
+                                <p>Through our expertise, technological knowledge, global presence and bespoke.</p>
+                                <div class="aon-ow-pro-rating">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star text-gray"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aon-ow-bottom">
+                            <a href="profile-full.html">Request A Quote</a>
+                        </div>
+                    </div>
+                </div>
+                <!--Block 5-->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                    <div class="aon-ow-provider-wrap">
+                        <div class="aon-ow-provider">
+
+                            <div class="aon-ow-top">
+                                <div class="aon-pro-check"><span><i class="fa fa-check"></i></span></div>
+                                <div class="aon-pro-favorite"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                <div class="aon-ow-info">
+                                    <h4 class="aon-title"><a href="profile-full.html">Mila Kunis</a></h4>
+                                    <span>Queens, United States</span>
+                                </div>
+                            </div>
+                            <div class="aon-ow-mid">
+                                <div class="aon-ow-media">
+                                    <a href="profile-full.html"><img src="images/providers/5.jpg" alt=""></a>
+                                </div>
+                                <p>Through our expertise, technological knowledge, global presence and bespoke.</p>
+                                <div class="aon-ow-pro-rating">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star text-gray"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aon-ow-bottom">
+                            <a href="profile-full.html">Request A Quote</a>
+                        </div>
+                    </div>
+                </div>
+                <!--Block 6-->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                    <div class="aon-ow-provider-wrap">
+                        <div class="aon-ow-provider">
+
+                            <div class="aon-ow-top">
+                                <div class="aon-pro-check"><span><i class="fa fa-check"></i></span></div>
+                                <div class="aon-pro-favorite"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                <div class="aon-ow-info">
+                                    <h4 class="aon-title"><a href="profile-full.html">Javier Bardem</a></h4>
+                                    <span>Queens, United States</span>
+                                </div>
+                            </div>
+                            <div class="aon-ow-mid">
+                                <div class="aon-ow-media">
+                                    <a href="profile-full.html"><img src="images/providers/6.jpg" alt=""></a>
+                                </div>
+                                <p>Through our expertise, technological knowledge, global presence and bespoke.</p>
+                                <div class="aon-ow-pro-rating">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star text-gray"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aon-ow-bottom">
+                            <a href="profile-full.html">Request A Quote</a>
+                        </div>
+                    </div>
+                </div>
+                <!--Block 7-->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                    <div class="aon-ow-provider-wrap">
+                        <div class="aon-ow-provider">
+
+                            <div class="aon-ow-top">
+                                <div class="aon-pro-check"><span><i class="fa fa-check"></i></span></div>
+                                <div class="aon-pro-favorite"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                <div class="aon-ow-info">
+                                    <h4 class="aon-title"><a href="profile-full.html">James McAvoy</a></h4>
+                                    <span>Queens, United States</span>
+                                </div>
+                            </div>
+                            <div class="aon-ow-mid">
+                                <div class="aon-ow-media">
+                                    <a href="profile-full.html"><img src="images/providers/7.jpg" alt=""></a>
+                                </div>
+                                <p>Through our expertise, technological knowledge, global presence and bespoke.</p>
+                                <div class="aon-ow-pro-rating">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star text-gray"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aon-ow-bottom">
+                            <a href="profile-full.html">Request A Quote</a>
+                        </div>
+                    </div>
+                </div>
+                <!--Block 8-->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                    <div class="aon-ow-provider-wrap">
+                        <div class="aon-ow-provider">
+
+                            <div class="aon-ow-top">
+                                <div class="aon-pro-check"><span><i class="fa fa-check"></i></span></div>
+                                <div class="aon-pro-favorite"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                <div class="aon-ow-info">
+                                    <h4 class="aon-title"><a href="profile-full.html">Colin Farrell</a></h4>
+                                    <span>Queens, United States</span>
+                                </div>
+                            </div>
+                            <div class="aon-ow-mid">
+                                <div class="aon-ow-media">
+                                    <a href="profile-full.html"><img src="images/providers/8.jpg" alt=""></a>
+                                </div>
+                                <p>Through our expertise, technological knowledge, global presence and bespoke.</p>
+                                <div class="aon-ow-pro-rating">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star text-gray"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aon-ow-bottom">
+                            <a href="profile-full.html">Request A Quote</a>
+                        </div>
+                    </div>
+                </div>
+                <!--Block 9-->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                    <div class="aon-ow-provider-wrap">
+                        <div class="aon-ow-provider">
+
+                            <div class="aon-ow-top">
+                                <div class="aon-pro-check"><span><i class="fa fa-check"></i></span></div>
+                                <div class="aon-pro-favorite"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                <div class="aon-ow-info">
+                                    <h4 class="aon-title"><a href="profile-full.html">Mila Kunis</a></h4>
+                                    <span>Queens, United States</span>
+                                </div>
+                            </div>
+                            <div class="aon-ow-mid">
+                                <div class="aon-ow-media">
+                                    <a href="profile-full.html"><img src="images/providers/9.jpg" alt=""></a>
+                                </div>
+                                <p>Through our expertise, technological knowledge, global presence and bespoke.</p>
+                                <div class="aon-ow-pro-rating">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star text-gray"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aon-ow-bottom">
+                            <a href="profile-full.html">Request A Quote</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Pagination start-->
+                <div class="site-pagination s-p-center">
+                  <ul class="pagination">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#" tabindex="-1"><i class="fa fa-chevron-left"></i></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active">
+                      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-ellipsis-h"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="#">11</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#"><i class="fa fa-chevron-right"></i></a>
+                    </li>
+                  </ul>
+                </div>  
+
+            </div>
+            <!-- Search Result Show End-->
+        </div>
+        <!-- Search Reshult Area End-->
+        
+
+    </div>
+    <!-- Content END-->
+
+
+</div>
+
+
+
+    
+    
+    
+
+{% include 'footerlinks.html' %}
+
+</body>
+
+
+<!-- Mirrored from aonetheme.com/sf-html-demo/search-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Apr 2023 19:15:15 GMT -->
+</html>

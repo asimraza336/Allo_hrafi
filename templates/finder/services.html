@@ -1,0 +1,197 @@
+{% extends 'baseProvider.html' %}
+
+{% block content %}
+                
+<div class="row">
+
+</div>
+
+
+
+
+
+
+             {% comment %} <div class="card aon-card" id="aon-contact-panel">
+                	<div class="card-header aon-card-header"><h4><i class="fa fa-envelope"></i> Contact Detail</h4></div>
+                    <div class="card-body aon-card-body">
+                    	<div class="row">
+                        	<div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Mobile</label>
+                                    <div class="aon-inputicon-box"> 
+                                        <input class="form-control sf-form-control" name="company_name" type="text">
+                                        <i class="aon-input-icon fa fa-phone"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Alt. Mobile</label>
+                                    <div class="aon-inputicon-box"> 
+                                        <input class="form-control sf-form-control" name="company_name" type="text">
+                                        <i class="aon-input-icon fa fa-mobile"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <div class="aon-inputicon-box"> 
+                                        <input class="form-control sf-form-control" name="company_name" type="text">
+                                        <i class="aon-input-icon fa fa-envelope"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Skype</label>
+                                    <div class="aon-inputicon-box"> 
+                                        <input class="form-control sf-form-control" name="company_name" type="text">
+                                        <i class="aon-input-icon fa fa-skype"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> Website</label>
+                                    <div class="aon-inputicon-box"> 
+                                        <input class="form-control sf-form-control" name="company_name" type="text">
+                                        <i class="aon-input-icon fa fa-globe"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>    {% endcomment %}
+
+
+
+
+
+
+
+
+{% if my_service %}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="sf-vender-list-wrap">
+            <div class="sf-vender-list-box d-flex">
+                <div class="sf-vender-list-pic" style="background-image:url({{my_service.thumbnail_image.url}})">
+                    <a class="sf-vender-pic-link" href="#"></a>
+                </div>
+                <div class="sf-vender-list-info">
+                    <h3 class="sf-venders-title"><a href="{% url 'EditService' my_service.id %}">{{my_service.name}}</a></h3>
+                    <h5 class="sf-venders-title"><a href="#">Category : {{my_service.category_id}}</a></h5>
+
+                    <span class="sf-venders-address"><i class="fa fa-map-marker"></i>{{user.city}}</span>
+                    {% comment %} <div class="sf-ow-pro-rating">
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star text-gray"></span>
+                    </div> {% endcomment %}
+                    <p>{{my_service.description}}</p>
+
+                    {% comment %} <div class="sf-pro-check"><span><i class="fa fa-check"></i></span></div>
+                    <div class="sf-pro-favorite"><a href="#"><i class="fa fa-heart-o"></i></a></div> {% endcomment %}
+
+                    
+                    <a href="{% url 'EditService' my_service.id %}" class="btn btn-warning">Edit</a>
+                    <button onclick="confirm_delete_service('{{my_service.id}}')" class="btn btn-danger">Delete</button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+                {% comment %} aon-pricing-area2 {% endcomment %}
+                <div class="section-full ">
+                    <div class="container">
+                        <!--Title Section Start-->
+                        <div class="section-head">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <span class="aon-sub-title">Pricing</span>
+                                    <h2 class="sf-title">Our Pricing Plans</h2>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        
+                        <div class="section-content">
+                            
+                            <div class="sf-pricing-section-outer">
+                                <div class="row no-gutter">
+                                    <!-- COLUMNS 1 -->
+                                    <div class="col-md">
+                                        <div class="sf-pricing-section">
+        
+                                            <div class="sf-price-tb-info">
+                                                <div class="sf-price-plan-name">Basic</div>
+                                                {% comment %} <div class="sf-price-plan-discount">Save 20%</div> {% endcomment %}
+                                            </div>
+        
+                                            <div class="sf-price-tb-list">
+                                                <ul>
+                                                    <li><i class="fa fa-check"></i>Can upload Maximum 3 images Of Serivce</li>
+                                                    {% comment %} <li><i class="fa fa-check"></i> Own Cover Image</li>
+                                                    <li class="disable"><i class="fa fa-check"></i> Multiple Categories</li>
+                                                    <li class="disable"><i class="fa fa-check"></i> Apply for Job</li>
+                                                    <li class="disable"><i class="fa fa-check"></i> Job Alerts</li>
+                                                    <li class="disable"><i class="fa fa-check"></i> Google Calendar</li>
+                                                    <li class="disable"><i class="fa fa-check"></i> Crop Profile Image</li> {% endcomment %}
+                                                </ul>
+                                            </div>
+        
+                                            <div class="sf-price-tb-plan">
+                                                <div class="sf-price-plan-cost"><span>Free</span></div>
+                                            </div>
+                                            <a href="{% url 'CreateService' %}" class="sf-choose-plan-btn">Choose Plan</a>
+                                        </div>
+                                    </div>
+                                    <!-- COLUMNS 2 -->
+                                  
+                                    <!-- COLUMNS 3 -->
+                                    <div class="col-md">
+                                        <div class="sf-pricing-section sf-pricing-active">
+        
+                                            <div class="sf-price-tb-info">
+                                                <div class="sf-price-plan-name">Premium</div>
+                                                {% comment %} <div class="sf-price-plan-discount">Save 20%</div> {% endcomment %}
+                                            </div>
+        
+                                            <div class="sf-price-tb-list">
+                                                <ul>
+                                                    <li><i class="fa fa-check"></i> Can Upload Upto 9 Images Of Serivce</li>
+                                                    {% comment %} <li><i class="fa fa-check"></i> Own Cover Image</li>
+                                                    <li><i class="fa fa-check"></i> Multiple Categories</li>
+                                                    <li><i class="fa fa-check"></i> Apply for Job</li>
+                                                    <li><i class="fa fa-check"></i> Job Alerts</li>
+                                                    <li><i class="fa fa-check"></i> Google Calendar</li>
+                                                    <li><i class="fa fa-check"></i> Crop Profile Image</li> {% endcomment %}
+                                                </ul>
+                                            </div>
+        
+                                            <div class="sf-price-tb-plan">
+                                                <div class="sf-price-plan-cost">$<span>5</span></div>
+                                            </div>
+                                            <a href="contact-us.html" class="sf-choose-plan-btn">Choose Plan</a>
+                                        </div>
+                                    </div>
+                                    <!-- COLUMNS 4 -->
+                                  
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+{% endblock %}

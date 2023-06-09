@@ -1,0 +1,71 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+{% block content %}
+<div class="row">
+<div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon card-header-rose">
+        <div class="card-icon">
+          <i class="material-icons">assignment</i>
+        </div>
+        <h4 class="card-title "> All Cities</h4>
+      </div>
+      <div class="card-body table-full-width table-hover">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="">
+              <th>
+                No
+              </th>
+              <th>
+                Name
+              </th>
+              <th>
+                Actions
+              </th>
+            </thead>
+            <tbody>
+                {% for city in cities %}
+              <tr class="">
+                <td>
+                  {{forloop.counter}}
+                </td>
+                <td>
+                    {{city.name}}
+                </td>
+                <td>
+                    <button class="btn  btn-sm" onclick="update({{city.pk}})">Update</button>
+                    <button class="btn btn-danger btn-sm" onclick="delete_city({{city.pk}})" >Delete</button>
+
+                </td>
+                
+              </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+    function update(pk){
+        var url = "{% url 'adminApp:EditCity' 123 %}";
+        document.location.href = url.replace('123', pk);
+    }
+
+    function delete_city(ids){
+        var result = confirm("Are you sure to delete City?");
+        if(result){
+            // var gradeId = parseInt($('#gradeId').text());
+            var url = "{% url 'adminApp:DeleteCity' 123 %}";
+            document.location.href = url.replace('123', ids);
+        }
+    
+    }
+    
+</script>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block title %}
+<title>Create CIty</title>
+{% endblock %}
+{% block content %}
+
+
+
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card ">
+        <div class="card-header card-header-rose card-header-icon">
+          <div class="card-icon">
+            <i class="material-icons">place</i>
+          </div>
+          <h4 class="card-title">Add City</h4>
+        </div>
+        <div class="card-body ">
+          <form method="POST" >
+            {% csrf_token %}
+
+            <div class="form-group">
+             <!--  <label for="exampleEmail" class="bmd-label-floating">Enter City Name Here</label>  -->
+              {{form.name}}
+              <span style="color: red;">{{form.name.errors}}</span>
+            </div>
+            <!-- <input type="email" class="form-control" id="exampleEmail"> -->
+
+           
+        </div>
+        <span style="visibility: hidden;">{{form.user}}</span>
+
+        <div class="card-footer ">
+          <button type="submit" class="btn btn-fill btn-rose" style="float:right">Submit</button>
+        </div>
+    </form>
+
+    </div>
+    </div>
+
+
+
+</div>
+
+  
+  
+  
+
+
+
+{% endblock %}

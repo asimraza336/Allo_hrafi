@@ -1,0 +1,339 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+
+<!-- Mirrored from aonetheme.com/sf-html-demo/all-categories.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Apr 2023 19:15:07 GMT -->
+<head>
+
+	<!-- META -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />    
+    <meta name="description" content="" />
+    
+    <!-- FAVICONS ICON -->
+    <link rel="icon" href="images/favicon.html" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}" />
+    
+    <!-- PAGE TITLE HERE -->
+    <title>Service Finder Template Template | Home Page Style 2</title>
+    
+    <!-- MOBILE SPECIFIC -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <!-- BOOTSTRAP STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
+    <!-- Bootstrap toggle -->
+    <link rel="stylesheet" type="text/css"  href="{% static 'css/bootstrap4-toggle.min.css' %}">
+    <!-- Bootstrap seclect -->
+    <link rel="stylesheet" type="text/css"  href="{% static 'css/bootstrap-select.min.css' %}" /> 
+    <!-- Price Range Slider -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-slider.min.css' %}" />
+    <!-- Bootstrap data table -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dataTables.bootstrap4.min.css' %}" >
+    <!-- Dropzone -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dropzone.css' %}" >
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}"  />    
+    <!-- Feather icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/feather.css' %}"  />  
+    <!-- Fontawesome -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}"/>
+    <!-- Lc light box popup -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lc_lightbox.css' %}" />     
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.min.css' %}">
+    <!-- Custom Scrollbar -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/m-custom-scrollbar.min.css' %}"  />
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.min.css' %}" >
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.min.css' %}" >
+    <!-- Slick Theme -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}" >  
+    <!-- Main STyle Sheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" >
+
+</head>
+
+<body>
+    <!-- LOADING AREA START ===== -->
+    <div class="loading-area">
+        <div class="loading-box"></div>
+        <div class="loading-pic">
+            <div class="windows8">
+                <div class="wBall" id="wBall_1">
+                    <div class="wInnerBall"></div>
+                </div>
+                <div class="wBall" id="wBall_2">
+                    <div class="wInnerBall"></div>
+                </div>
+                <div class="wBall" id="wBall_3">
+                    <div class="wInnerBall"></div>
+                </div>
+                <div class="wBall" id="wBall_4">
+                    <div class="wInnerBall"></div>
+                </div>
+                <div class="wBall" id="wBall_5">
+                    <div class="wInnerBall"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOADING AREA  END ====== -->
+	<div class="page-wraper">        <!-- HEADER START -->
+        {% include 'headers.html' %}
+       
+        <!-- HEADER END -->
+    
+        <!-- Content -->
+        <div class="page-content">
+            
+            <!-- Banner Area -->
+            {% comment %} <div class="aon-page-benner-area2">
+             
+                <div class="aon-banner-large2-title">
+                    Still not finding what you're looking for? View all Provider categories
+                </div>
+              
+            </div> {% endcomment %}
+            <!-- Banner Area End -->
+            
+            <!-- All categories Block Section -->
+            <div class="aon-all-categories-wrap2">
+                <div class="container">
+                    <div class="aon-all-categories-block2">
+                        <div class="row">
+                            <!--block-1-->
+                            {% for cat in categories %}
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="aon-all-cat-block" style="background-image: url({{cat.category_image.url}});">
+                                    <div class="aon-cat-quantity">
+                                        <span><i>+</i>05</span>
+                                    </div>
+                                    <div class="aon-cat-name">
+                                        <h3><a href="{% url 'categories_details' cat.pk %}">{{cat.name}}</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                   
+                </div>
+            </div> 
+            <!-- All categories Block Section  END -->
+
+            <!-- all cat list Section -->
+           
+            <!-- all cat list Section  END -->
+
+            <!-- all cat list Section -->
+          
+            <!-- all cat list Section  END -->
+
+            <!-- all cat list Section -->
+            
+            <!-- all cat list Section  END -->
+            
+            </div>
+        <!-- Content END-->
+
+        <!-- FOOTER START -->
+        {% include 'footer.html' %}
+     
+        <!-- FOOTER END -->
+
+        <!-- BUTTON TOP START -->
+		<button class="scroltop"><span class="fa fa-angle-up  relative" id="btn-vibrate"></span></button>
+
+ 	</div>
+
+
+    <!-- Login Sign Up Modal -->
+    <div class="modal fade" id="login-signup-model">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close aon-login-close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            <div class="modal-body">
+
+                <div class="sf-custom-tabs sf-custom-new aon-logon-sign-area p-3">
+
+                    <!--Tabs-->
+                    <ul class="nav nav-tabs nav-table-cell">
+                        <li><a data-toggle="tab" href="#Upcoming" class="active">Login</a></li>
+                        <li><a data-toggle="tab" href="#Past">Sign up</a></li>
+                    </ul>
+                    <!--Tabs Content--> 
+                    <div class="tab-content">
+
+                        <!--Login Form-->
+                        <div id="Upcoming" class="tab-pane active">
+                            <div class="sf-tabs-content">
+                                <form class="aon-login-form">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="aon-inputicon-box"> 
+                                                    <input class="form-control sf-form-control" name="company_name" type="text" placeholder="User Name">
+                                                    <i class="aon-input-icon fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="aon-inputicon-box"> 
+                                                    <input class="form-control sf-form-control" name="company_name" type="password" placeholder="Password">
+                                                    <i class="aon-input-icon fa fa-lock"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group d-flex aon-login-option justify-content-between">
+                                                <div class="aon-login-opleft">
+                                                     <div class="checkbox sf-radio-checkbox">
+                                                        <input id="td2_2" name="abc" value="five" type="checkbox">
+                                                        <label for="td2_2">Keep me logged</label>
+                                                    </div>  
+                                                </div>
+                                                <div class="aon-login-opright">
+                                                    <a href="#">Forget Password</a>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="col-md-12">
+                                            <button type="submit" class="site-button w-100">Submit <i class="feather-arrow-right"></i> </button>
+                                        </div>                                          
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!--Sign up Form-->
+                        <div id="Past" class="tab-pane">
+                            <div class="sf-tabs-content">
+                                <form class="aon-login-form">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="aon-inputicon-box"> 
+                                                    <input class="form-control sf-form-control" name="First_Name" type="text" placeholder="First Name">
+                                                    <i class="aon-input-icon fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="aon-inputicon-box"> 
+                                                    <input class="form-control sf-form-control" name="company_name" type="password" placeholder="Last Name">
+                                                    <i class="aon-input-icon fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="aon-inputicon-box"> 
+                                                    <input class="form-control sf-form-control" name="Phone" type="password" placeholder="Phone">
+                                                    <i class="aon-input-icon fa fa-phone"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="aon-inputicon-box"> 
+                                                    <input class="form-control sf-form-control" name="email" type="password" placeholder="Email">
+                                                    <i class="aon-input-icon fa fa-envelope-o"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="aon-inputicon-box"> 
+                                                    <input class="form-control sf-form-control" name="password" type="password" placeholder="Password">
+                                                    <i class="aon-input-icon fa fa-lock"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                         <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="aon-inputicon-box"> 
+                                                    <input class="form-control sf-form-control" name="password" type="password" placeholder="Confirm Password">
+                                                    <i class="aon-input-icon fa fa-lock"></i>
+                                                </div>
+                                            </div>
+                                        </div>                                        
+                                        
+                                        <div class="col-md-12">
+                                            <div class="form-group sign-term-con">
+                                                <div class="checkbox sf-radio-checkbox">
+                                                    <input id="td33" name="abc" value="five" type="checkbox">
+                                                    <label for="td33">I've read and agree with your <a href="#">Privacy Policy</a> and <a href="#">Terms & Conditions</a> </label>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="col-md-12">
+                                            <button type="submit" class="site-button w-100">Submit <i class="feather-arrow-right"></i> </button>
+                                        </div>                                          
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- Login Sign Up Modal --> 
+    
+    
+    
+    
+    <script  src="{% static 'js/jquery-3.6.0.min.js' %}" ></script><!-- JQUERY.MIN JS -->
+    <script  src="{% static 'js/popper.min.js' %}" ></script><!-- POPPER.MIN JS -->
+    <script  src="{% static 'js/bootstrap.min.js' %}"></script><!-- BOOTSTRAP.MIN JS -->
+    <script  src="{% static 'js/bootstrap-select.min.js' %}"></script><!-- BOOTSTRAP SELECT -->    
+    <script  src="{% static 'js/jquery.bootstrap-touchspin.js' %}"></script><!-- FORM JS -->
+    <script  src="{% static 'js/magnific-popup.min.js' %}"></script><!-- MAGNIFIC-POPUP JS -->
+    <script  src="{% static 'js/waypoints.min.js' %}"></script><!-- WAYPOINTS JS -->
+    <script  src="{% static 'js/counterup.min.js' %}"></script><!-- COUNTERUP JS -->
+    <script  src="{% static 'js/waypoints-sticky.min.js' %}"></script><!-- STICKY HEADER -->
+    <script  src="{% static 'js/isotope.pkgd.min.js' %}"></script><!-- MASONRY  -->
+        
+    <script  src="{% static 'js/owl.carousel.min.js' %}" ></script><!-- OWL  SLIDER  -->
+    <script  src="{% static 'js/slick.min.js' %}" ></script><!-- OWL  SLIDER  -->
+        
+    <script  src="{% static 'js/theia-sticky-sidebar.js' %}" ></script><!-- STICKY SIDEBAR  -->
+    <script src="{% static 'js/m-custom-scrollbar.min.js' %}" ></script><!-- my account left panel scroller -->
+    <script src="{% static 'js/dropzone.js' %}" ></script><!-- Images upload -->  
+    
+    <script src="{% static 'js/bootstrap4-toggle.min.js' %}" ></script>
+    <script src="{% static 'js/jquery.dataTables.min.js' %}" ></script>
+    <script src="{% static 'js/dataTables.bootstrap4.min.js' %}" ></script>
+    
+    <script  src="{% static 'js/custom.js' %}"></script><!-- CUSTOM FUCTIONS  -->
+    <script src="{% static 'js/lc_lightbox.lite.js' %}" ></script><!-- IMAGE POPUP -->
+    <script  src="{% static 'js/bootstrap-slider.min.js' %}"></script><!-- Form js -->
+
+</body>
+
+
+<!-- Mirrored from aonetheme.com/sf-html-demo/all-categories.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Apr 2023 19:15:09 GMT -->
+</html>

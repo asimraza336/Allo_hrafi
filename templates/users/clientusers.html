@@ -1,0 +1,124 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+{% block content %}
+<div class="row">
+<div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon card-header-rose">
+        <div class="card-icon">
+          <i class="material-icons">person</i>
+        </div>
+        <h4 class="card-title "> All Client User</h4>
+      </div>
+      <div class="card-body table-full-width table-hover">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="">
+              <th>
+                No
+              </th>
+              <th>
+                Profile Picture
+              </th>
+              <th>
+                UserName
+              </th>
+              <th>
+                Name
+              </th>
+              <th>
+                Email
+              </th>
+              <th>
+                Phone Number
+              </th>
+              <th>
+                Gender
+              </th>
+              <th>
+                Status
+              </th>
+              <th>
+                Actions
+              </th>
+            </thead>
+            <tbody>
+                {% for user in client_user %}
+              <tr class="">
+                <td>
+                  {{forloop.counter}}
+                </td>
+              
+                <td>
+                    <div class="img-container" >
+                        {% if user.profile_picture.url  %}
+                        <img height="150px" width="120px" src="{{user.profile_picture.url}}" />
+                        {% else   %}
+                        <p>No Image </p>
+                        {% endif   %}
+
+                    </div>
+                  </td>
+                <td>
+                    {{user.username}}
+                </td>
+                <td>
+                    {{user.first_name}} {{user.last_name}}
+                </td>
+                <td>
+                    {{user.email}}
+                </td>
+                <td>
+                    {{user.phone_number}}
+                </td>
+                <td>
+                    {{user.gender}}
+                </td>
+                <td>
+                    {% if user.is_active  %}
+                    <p>Active</p>
+                    {% else   %}
+                        <p>De-Activated </p>
+                        {% endif   %}
+                </td>
+                <td>
+                    {% if user.is_active  %}
+                    <button class="btn  btn-sm" onclick="update({{user.pk}})">Deactivate</button>
+                    {% else   %}
+                    <button class="btn  btn-sm" onclick="update({{user.pk}})">Activate</button>
+                    {% endif   %}
+
+                    <button class="btn btn-danger btn-sm" onclick="delete_user({{user.pk}})" >Delete</button>
+
+                </td>
+                
+              </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+    function update(pk){
+        var url = "{% url 'adminApp:ChangeUserStatus' 123 %}";
+        document.location.href = url.replace('123', pk);
+    }
+
+    function delete_user(ids){
+        var result = confirm("Are you sure to delete Category?");
+        if(result){
+            var url = "{% url 'adminApp:DeleteUser' 123 %}";
+
+            document.location.href = url.replace('123', ids);
+        }
+    
+    }
+    
+</script>
+{% endblock %}

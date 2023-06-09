@@ -1,0 +1,92 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+{% block content %}
+<div class="row">
+<div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon card-header-rose">
+        <div class="card-icon">
+          <i class="material-icons">assignment</i>
+        </div>
+        <h4 class="card-title "> All Categories</h4>
+      </div>
+      <div class="card-body table-full-width table-hover">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="">
+              <th>
+                No
+              </th>
+              <th>
+                Image
+              </th>
+              <th>
+                Name
+              </th>
+              <th>
+                Description
+              </th>
+              <th>
+                Created At
+              </th>
+              <th>
+                Actions
+              </th>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+              <tr class="">
+                <td>
+                  {{forloop.counter}}
+                </td>
+              
+                <td>
+                    <div class="img-container" >
+                        <img height="150px" width="200px" src="{{category.category_image.url}}" />
+                    </div>
+                  </td>
+                <td>
+                    {{category.name}}
+                </td>
+                <td>
+                    {{category.description}}
+                </td>
+                <td>
+                    {{category.created_at}}
+                </td>
+                <td>
+                    <button class="btn  btn-sm" onclick="update({{category.pk}})">Update</button>
+                    <button class="btn btn-danger btn-sm" onclick="delete_category({{category.pk}})" >Delete</button>
+
+                </td>
+                
+              </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+    function update(pk){
+        var url = "{% url 'adminApp:EditCategory' 123 %}";
+        document.location.href = url.replace('123', pk);
+    }
+
+    function delete_category(ids){
+        var result = confirm("Are you sure to delete Category?");
+        if(result){
+            var url = "{% url 'adminApp:DeleteCategory' 123 %}";
+
+            document.location.href = url.replace('123', ids);
+        }
+    
+    }
+    
+</script>
+{% endblock %}
